@@ -49,7 +49,6 @@ download_if_missing() {
   done
 }
 
-# Only models required by this workflow/API request
 download_if_missing \
   "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.0.safetensors" \
   "models/latent_upscale_models" \
@@ -75,5 +74,5 @@ download_if_missing \
   "models/loras" \
   "LTX2.3_Reasoning_V1.safetensors"
 
-echo "[INFO] Starting Runpod ComfyUI worker"
-exec python -u /rp_handler.py
+echo "[INFO] Handing off to base image startup"
+exec "$@"
