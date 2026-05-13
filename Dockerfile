@@ -29,11 +29,11 @@ RUN comfy node install --exit-on-fail comfyui-videohelpersuite@1.7.9 --mode remo
     (echo "WARN: comfyui-videohelpersuite@1.7.9 unavailable, falling back to latest" >&2 && \
      comfy node install --exit-on-fail comfyui-videohelpersuite --mode remote)
 
-RUN mkdir -p /comfyui/input
-RUN wget --progress=dot:giga -O "/comfyui/input/2026-05-05 230352-gpt-image-2.png" \
+RUN mkdir -p /comfyui/input && \
+    wget --progress=dot:giga -O "/comfyui/input/2026-05-05 230352-gpt-image-2.png" \
     "https://cool-anteater-319.convex.cloud/api/storage/99ee5647-5ebb-482d-9bcc-f06ea2510f07"
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-CMD ["/start.sh"]
+ENTRYPOINT ["/start.sh"]
